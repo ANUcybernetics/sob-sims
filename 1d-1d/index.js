@@ -1,7 +1,7 @@
 import p5 from "p5";
 
 const sketch = (p) => {
-  const N = 100;
+  const N = 500;
   const AGENT_RADIUS = 20;
   const DISTANCE_EXPONENT = 2.0;
   const AGITATION_DELTA = 0.01;
