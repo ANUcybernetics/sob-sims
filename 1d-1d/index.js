@@ -4,7 +4,7 @@ const sketch = (p) => {
   const N = 500;
   const AGENT_RADIUS = 20;
   const DISTANCE_EXPONENT = 2.0;
-  const AGITATION_DELTA = 0.01;
+  const AGITATION_DELTA = 0.1;
   const MAX_MOVE_DISTANCE = 10.0;
   const INITIAL_AGITATION = 0.5;
 
