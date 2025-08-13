@@ -7,7 +7,7 @@ const sketch = (p) => {
   const AGITATION_DELTA = 0.1;
   const MAX_MOVE_DISTANCE = 10.0;
   const INITIAL_AGITATION = 0.5;
-  const ENABLE_SENSING = true;
+  const ENABLE_SENSING = false;
 
   let agents = [];
 
@@ -18,8 +18,7 @@ const sketch = (p) => {
     for (let i = 0; i < N; i++) {
       const x = p.random(p.width);
       const y = p.random(p.height);
-      const hue = (x / p.width) * 360;
-      const saturation = (y / p.height) * 100;
+      const hue = (x / p.width * 300 + y / p.height * 60) % 360;
 
       agents[i] = {
         x: x,
@@ -27,7 +26,6 @@ const sketch = (p) => {
         agitation: INITIAL_AGITATION,
         microphone: 0,
         hue: hue,
-        saturation: saturation,
       };
     }
   };
@@ -87,7 +85,7 @@ const sketch = (p) => {
     p.noStroke();
     for (let i = 0; i < N; i++) {
       const agent = agents[i];
-      p.fill(agent.hue, agent.saturation, 70, 0.5);
+      p.fill(agent.hue, 100, 70, 0.5);
       p.circle(agent.x, agent.y, AGENT_RADIUS * 2);
     }
   };
