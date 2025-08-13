@@ -12,13 +12,21 @@ const sketch = (p) => {
 
   p.setup = () => {
     p.createCanvas(p.windowWidth, p.windowHeight);
+    p.colorMode(p.HSB, 360, 100, 100);
 
     for (let i = 0; i < N; i++) {
+      const x = p.random(p.width);
+      const y = p.random(p.height);
+      const hue = (x / p.width) * 360;
+      const saturation = (y / p.height) * 100;
+
       agents[i] = {
-        x: p.random(p.width),
-        y: p.random(p.height),
+        x: x,
+        y: y,
         agitation: INITIAL_AGITATION,
         microphone: 0,
+        hue: hue,
+        saturation: saturation,
       };
     }
   };
@@ -69,9 +77,10 @@ const sketch = (p) => {
     }
 
     p.noStroke();
-    p.fill(128, 128);
     for (let i = 0; i < N; i++) {
-      p.circle(agents[i].x, agents[i].y, AGENT_RADIUS * 2);
+      const agent = agents[i];
+      p.fill(agent.hue, agent.saturation, 70, 0.5);
+      p.circle(agent.x, agent.y, AGENT_RADIUS * 2);
     }
   };
 
