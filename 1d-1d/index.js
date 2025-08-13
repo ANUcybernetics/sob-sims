@@ -2,7 +2,7 @@ import p5 from "p5";
 
 const sketch = (p) => {
   const N = 100;
-  const AGENT_RADIUS = 8;
+  const AGENT_RADIUS = 20;
   const DISTANCE_EXPONENT = 2.0;
   const AGITATION_DELTA = 0.01;
   const MAX_MOVE_DISTANCE = 10.0;
@@ -26,6 +26,7 @@ const sketch = (p) => {
   p.draw = () => {
     p.background(255);
 
+    const newMicrophones = [];
     for (let i = 0; i < N; i++) {
       const agent = agents[i];
 
@@ -42,6 +43,12 @@ const sketch = (p) => {
           newMicrophone += other.agitation / p.pow(distance, DISTANCE_EXPONENT);
         }
       }
+      newMicrophones[i] = newMicrophone;
+    }
+
+    for (let i = 0; i < N; i++) {
+      const agent = agents[i];
+      const newMicrophone = newMicrophones[i];
 
       if (newMicrophone > agent.microphone) {
         agent.agitation -= AGITATION_DELTA;
