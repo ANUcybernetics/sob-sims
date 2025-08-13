@@ -21,6 +21,20 @@ npm run dev
 
 Then navigate to http://localhost:5173/ to see the available simulations.
 
+## Exporting standalone simulations
+
+To export a simulation as a single standalone HTML file:
+
+```bash
+# Export the 1d-1d simulation
+npm run build:single
+
+# Export a different simulation (when available)
+SIMULATION=folder-name npm run build:single
+```
+
+The standalone HTML file will be created at `dist-single/[simulation-name]/index.html`. This file contains everything needed to run the simulation and can be opened directly in any browser.
+
 ## Author
 
 Ben Swift

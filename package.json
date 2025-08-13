@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:single": "SIMULATION=1d-1d vite build --config vite.config.single.js",
     "preview": "vite preview"
   },
   "keywords": [],
@@ -13,7 +14,8 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "vite": "^7.1.2"
+    "vite": "^7.1.2",
+    "vite-plugin-singlefile": "^2.3.0"
   },
   "dependencies": {
     "p5": "^2.0.4"
